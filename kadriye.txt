@@ -1,1 +1,35 @@
- https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/?tag=33223170
+// https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/?tag=33223170
+
+import Map "mo:base/HashMap";
+import Text "mo:base/Text";
+
+actor {
+  type Name = Text;
+  type Phone = Text;
+
+  type Entry={
+    desc: Text;
+    phone: Phone;
+  };
+  //değişkenler
+  //let->immutable(değişmez)
+  //var->mutable(değişebilir)
+  //const->...
+
+  let phonebook = Map.HashMap<Name, Entry>(0,Text.equal, Text.hash);
+//query ->sorgular
+//update ->geliştirme
+//async() ->paralelde hızlı ve güvenli yapılmasını sağlıyor.
+
+public func insert(name : Name, entry: Entry): async () {
+  phonebook.put(name, entry);
+};
+
+//loop -> if,when,while,break
+
+public query func lookup(name : Name) : async ?Entry {
+phonebook.get(name)
+};
+
+
+};
